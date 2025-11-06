@@ -1,1 +1,401 @@
-hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Next Step - Consultoría legal y compliance digital para el siguiente paso de tu empresa">
+    <title>The Next Step | Consultoría Legal y Compliance Digital</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Video de fondo lunar -->
+    <video id="lunar-video-bg" autoplay muted loop playsinline>
+        <source src="assets/videos/background.mp4" type="video/mp4">
+        <!-- Fallback a imagen si el video no carga -->
+    </video>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/icon.svg" alt="The Next Step" style="height: 45px; margin-right: 10px; filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));">
+                    <div style="display: flex; flex-direction: column;">
+                        <span class="logo-text" data-translate="hero-title">The Next Step</span>
+                        <span class="logo-subtitle" data-translate="logo-subtitle">Legal Consulting</span>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#inicio" class="nav-link active" data-translate="nav-inicio">Inicio</a></li>
+                        <li><a href="#servicios" class="nav-link" data-translate="nav-servicios">Servicios</a></li>
+                        <li><a href="#ciberseguridad" class="nav-link" data-translate="nav-ciber">Ciberseguridad</a></li>
+                        <li><a href="#nosotros" class="nav-link" data-translate="nav-nosotros">Nosotros</a></li>
+                        <li><a href="#clientes" class="nav-link" data-translate="nav-clientes">Clientes</a></li>
+                        <li><a href="#contacto" class="nav-link" data-translate="nav-contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="es">🇦🇷 ES</button>
+                    <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+                    <button class="lang-btn" data-lang="ar">🇸🇦 AR</button>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in" data-translate="hero-title">The Next Step</h1>
+                <p class="hero-subtitle fade-in" data-translate="hero-subtitle">Consultoría legal y compliance digital para el siguiente paso de tu empresa.</p>
+                <a href="#contacto" class="btn btn-primary fade-in" data-translate="hero-btn">Dar el siguiente paso</a>
+                <p class="hero-experience fade-in" data-translate="hero-experience">Más de 10 años de experiencia asesorando empresas del sector público y privado.</p>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section class="servicios" id="servicios">
+        <div class="container">
+            <h2 class="section-title" data-translate="servicios-title">Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio-title" data-translate="servicio-1-title">Consultoría Legal Integral</h3>
+                    <p class="servicio-description" data-translate="servicio-1-desc">Constitución de sociedades, contratos, y asesoría completa en derecho empresarial para el crecimiento de tu negocio.</p>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio-title" data-translate="servicio-2-title">Compliance Digital</h3>
+                    <p class="servicio-description" data-translate="servicio-2-desc">Normativas digitales, derecho tecnológico y adaptación legal especializada para startups y empresas tech.</p>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio-title" data-translate="servicio-3-title">Ciberseguridad</h3>
+                    <p class="servicio-description" data-translate="servicio-3-desc">Protección de datos, auditorías técnicas y asesoramiento preventivo en seguridad informática empresarial.</p>
+                </div>
+
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <h3 class="servicio-title" data-translate="servicio-4-title">Asesoría Estratégica</h3>
+                    <p class="servicio-description" data-translate="servicio-4-desc">Escalamiento empresarial y planificación legal estratégica para startups en fase de crecimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ciberseguridad Section -->
+    <section class="ciberseguridad" id="ciberseguridad">
+        <div class="container">
+            <h2 class="section-title" data-translate="ciber-title">Ciberseguridad</h2>
+            <p class="section-subtitle" data-translate="ciber-subtitle">Soluciones técnicas para proteger tu infraestructura digital</p>
+            
+            <div class="ciber-grid">
+                <!-- Card 1: Pentest 360° -->
+                <div class="ciber-card">
+                    <div class="ciber-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <line x1="12" y1="2" x2="12" y2="4"/>
+                            <line x1="12" y1="20" x2="12" y2="22"/>
+                            <line x1="2" y1="12" x2="4" y2="12"/>
+                            <line x1="20" y1="12" x2="22" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="ciber-title" data-translate="pentest-title">Pentest 360°</h3>
+                    <p class="ciber-subtitle" data-translate="pentest-subtitle">Ataques controlados. Resultados accionables.</p>
+                    <ul class="ciber-features">
+                        <li data-translate="pentest-feat-1">
+                            <span class="feature-icon">→</span>
+                            Web/API/Mobile/AD/Cloud
+                        </li>
+                        <li data-translate="pentest-feat-2">
+                            <span class="feature-icon">→</span>
+                            OWASP/OSSTMM/MITRE
+                        </li>
+                        <li data-translate="pentest-feat-3">
+                            <span class="feature-icon">→</span>
+                            Informe ejecutivo + técnico
+                        </li>
+                        <li data-translate="pentest-feat-4">
+                            <span class="feature-icon">→</span>
+                            Retest incluido
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary" data-translate="pentest-cta">Solicitar propuesta</a>
+                </div>
+
+                <!-- Card 2: Vulnerabilidades 24/7 -->
+                <div class="ciber-card">
+                    <div class="ciber-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M12 8v4m0 4h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="ciber-title" data-translate="vmaas-title">Vulnerabilidades 24/7</h3>
+                    <p class="ciber-subtitle" data-translate="vmaas-subtitle">ASM + gestión y parches guiados.</p>
+                    <ul class="ciber-features">
+                        <li data-translate="vmaas-feat-1">
+                            <span class="feature-icon">→</span>
+                            Discovery de activos
+                        </li>
+                        <li data-translate="vmaas-feat-2">
+                            <span class="feature-icon">→</span>
+                            Scans autenticados
+                        </li>
+                        <li data-translate="vmaas-feat-3">
+                            <span class="feature-icon">→</span>
+                            Prioridad por CISA KEV/EPSS
+                        </li>
+                        <li data-translate="vmaas-feat-4">
+                            <span class="feature-icon">→</span>
+                            Dashboard + alertas
+                        </li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary" data-translate="vmaas-cta">Agendar demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué elegirnos Section -->
+    <section class="why-us">
+        <div class="container">
+            <div class="why-us-content">
+                <div class="why-us-text">
+                    <h2 class="section-title" data-translate="why-title">Por qué elegirnos</h2>
+                    <p class="why-us-highlight" data-translate="why-highlight">Somos los únicos en Santa Fe capital que integran derecho digital, ciberseguridad y experiencia legal en una sola consultora.</p>
+                    <p class="why-us-subtitle" data-translate="why-subtitle">Nuestro equipo combina más de una década de experiencia y una visión innovadora para empresas en crecimiento.</p>
+                </div>
+                <div class="why-us-image">
+                    <div class="astronaut-icon">
+                        <svg viewBox="0 0 200 200" fill="none">
+                            <circle cx="100" cy="60" r="30" fill="#d4af37" opacity="0.3"/>
+                            <circle cx="100" cy="60" r="25" fill="#f4d03f" opacity="0.5"/>
+                            <rect x="80" y="85" width="40" height="50" rx="5" fill="#d4af37" opacity="0.3"/>
+                            <circle cx="100" cy="150" r="8" fill="#b8941e" opacity="0.5"/>
+                            <path d="M100 158 L95 180 M100 158 L105 180" stroke="#d4af37" stroke-width="3" opacity="0.3"/>
+                            <path d="M80 100 L60 120 M120 100 L140 120" stroke="#d4af37" stroke-width="3" opacity="0.3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section class="nosotros" id="nosotros">
+        <div class="container">
+            <h2 class="section-title" data-translate="nosotros-title">Quiénes Somos</h2>
+            <div class="nosotros-content">
+                <div class="nosotros-text">
+                    <h3 data-translate="nosotros-historia-title">Nuestra Historia</h3>
+                    <p data-translate="nosotros-historia-p1">Nacimos con una misión clara: acompañar a cada negocio a dar su siguiente paso hacia el futuro. En un mundo empresarial en constante transformación, entendemos que el éxito requiere no solo cumplimiento normativo, sino una visión estratégica que anticipe los desafíos del mañana.</p>
+                    <p data-translate="nosotros-historia-p2">Desde nuestra fundación, hemos trabajado con empresas de diversos sectores, desde startups tecnológicas hasta corporaciones establecidas, ayudándolas a navegar el complejo panorama legal y digital con confianza y seguridad.</p>
+                </div>
+                <div class="nosotros-text">
+                    <h3 data-translate="nosotros-valores-title">Nuestros Valores</h3>
+                    <div class="valores-list">
+                        <div class="valor-item">
+                            <span class="valor-icon">→</span>
+                            <div>
+                                <strong data-translate="valor-1-title">Innovación</strong>
+                                <p data-translate="valor-1-desc">Adoptamos las últimas tendencias legales y tecnológicas</p>
+                            </div>
+                        </div>
+                        <div class="valor-item">
+                            <span class="valor-icon">→</span>
+                            <div>
+                                <strong data-translate="valor-2-title">Confianza</strong>
+                                <p data-translate="valor-2-desc">Construimos relaciones duraderas basadas en la transparencia</p>
+                            </div>
+                        </div>
+                        <div class="valor-item">
+                            <span class="valor-icon">→</span>
+                            <div>
+                                <strong data-translate="valor-3-title">Compromiso</strong>
+                                <p data-translate="valor-3-desc">Nos dedicamos al éxito de cada cliente como si fuera nuestro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clientes Section -->
+    <section class="clientes" id="clientes">
+        <div class="container">
+            <h2 class="section-title" data-translate="clientes-title">Confían en Nosotros</h2>
+            <div class="clientes-logos">
+                <div class="cliente-logo">EMPRESA 1</div>
+                <div class="cliente-logo">EMPRESA 2</div>
+                <div class="cliente-logo">EMPRESA 3</div>
+                <div class="cliente-logo">EMPRESA 4</div>
+                <div class="cliente-logo">EMPRESA 5</div>
+                <div class="cliente-logo">EMPRESA 6</div>
+            </div>
+            <div class="testimonios">
+                <div class="testimonio-card">
+                    <p class="testimonio-text" data-translate="testimonio-1">"The Next Step nos ayudó a estructurar legalmente nuestra startup tech desde cero. Su conocimiento en compliance digital fue fundamental."</p>
+                    <p class="testimonio-autor" data-translate="testimonio-1-autor">— María González, CEO TechStart</p>
+                </div>
+                <div class="testimonio-card">
+                    <p class="testimonio-text" data-translate="testimonio-2">"Profesionalismo y experiencia en ciberseguridad. Nos brindaron la tranquilidad que necesitábamos para escalar nuestro negocio."</p>
+                    <p class="testimonio-autor" data-translate="testimonio-2-autor">— Carlos Martínez, Director InnovaCorp</p>
+                </div>
+                <div class="testimonio-card">
+                    <p class="testimonio-text" data-translate="testimonio-3">"Un equipo excepcional que entiende las necesidades del sector privado. Recomendados al 100%."</p>
+                    <p class="testimonio-autor" data-translate="testimonio-3-autor">— Laura Fernández, Gerente Legal DataSolutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <h2 class="section-title" data-translate="contacto-title">Contacto</h2>
+            <div class="contacto-content">
+                <div class="contacto-form-container">
+                    <form class="contacto-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="nombre" data-translate="form-nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required data-translate="form-nombre" placeholder="Nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-translate="form-email">Email</label>
+                            <input type="email" id="email" name="email" required data-translate="form-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa" data-translate="form-empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa" data-translate="form-empresa" placeholder="Empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje" data-translate="form-mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required data-translate="form-mensaje" placeholder="Mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-translate="form-btn">Enviar consulta</button>
+                    </form>
+                </div>
+                <div class="contacto-info">
+                    <h3 data-translate="contacto-info-title">Información de Contacto</h3>
+                    <div class="info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <div>
+                            <strong data-translate="contacto-direccion">Dirección</strong>
+                            <p data-translate="contacto-direccion-texto">Puerto Norte, Santa Fe, Argentina</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <div>
+                            <strong data-translate="contacto-telefono">Teléfono</strong>
+                            <p>+54 9 3425 03-1568</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div>
+                            <strong data-translate="contacto-email">Email</strong>
+                            <p>contacto@thenextstep.com.ar</p>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.6167853732883!2d-60.6680789!3d-31.6413956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a83b8cf4e35d%3A0x4c6f7a7b8b8b8b8b!2sPuerto%20Norte%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1699293600000!5m2!1ses!2sar"
+                            width="100%" 
+                            height="250" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text" data-translate="hero-title">The Next Step</span>
+                        <span class="logo-subtitle" data-translate="logo-subtitle">Legal Consulting</span>
+                    </div>
+                    <p class="footer-tagline" data-translate="footer-tagline">Dando el siguiente paso hacia el futuro.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:contacto@thenextstep.com.ar" class="social-link" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>The Next Step © 2025 — Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
