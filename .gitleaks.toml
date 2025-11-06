@@ -1,0 +1,47 @@
+# Gitleaks Configuration
+
+title = "Gitleaks Configuration for The Next Step"
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = '''(?i)(api[_-]?key|apikey|api[_-]?secret)['"\s:=]*([0-9a-zA-Z\-_]{20,})'''
+tags = ["key", "API", "generic"]
+
+[[rules]]
+id = "jwt"
+description = "JWT Token"
+regex = '''eyJ[A-Za-z0-9_-]*\.eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]*'''
+tags = ["jwt", "token"]
+
+[[rules]]
+id = "private-key"
+description = "Private Key"
+regex = '''-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'''
+tags = ["key", "private"]
+
+[[rules]]
+id = "password-in-url"
+description = "Password in URL"
+regex = '''(?i)[a-zA-Z]{3,10}://[^/\s:@]{3,20}:[^/\s:@]{3,20}@.{1,100}'''
+tags = ["password", "url"]
+
+[[rules]]
+id = "env-secret"
+description = "Environment Secret"
+regex = '''(?i)(secret|password|passwd|pwd|token)[\s]*=[\s]*['"]([^'"]+)['"]'''
+tags = ["secret", "env"]
+
+[allowlist]
+description = "Allowlist for false positives"
+paths = [
+  '''.env.example$''',
+  '''README.*\.md$''',
+  '''.*\.md$''',
+]
+regexes = [
+  '''CAMBIAR_POR_''',
+  '''example\.com''',
+  '''localhost''',
+  '''127\.0\.0\.1''',
+]

@@ -1,0 +1,15 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged
+npx lint-staged
+
+# Run tests
+npm test
+
+# Scan for secrets
+npm run scan:secrets || {
+  echo "⚠️  Gitleaks detectó posibles secretos en el código"
+  echo "Por favor revisa y elimina información sensible antes de commitear"
+  exit 1
+}

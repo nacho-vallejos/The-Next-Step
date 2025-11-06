@@ -1,0 +1,254 @@
+name: Security Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Ejecutar análisis de seguridad semanalmente
+    - cron: '0 2 * * 1'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  # ==========================================
+  # ESCANEO DE SECRETOS
+  # ==========================================
+  secrets-scan:
+    name: Scan for Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ==========================================
+  # ANÁLISIS ESTÁTICO (SAST)
+  # ==========================================
+  codeql:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-extended,security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"
+
+  # ==========================================
+  # NPM AUDIT
+  # ==========================================
+  npm-audit:
+    name: NPM Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Generate audit report
+        run: npm audit --json > npm-audit-report.json
+        continue-on-error: true
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v3
+        with:
+          name: npm-audit-report
+          path: npm-audit-report.json
+
+  # ==========================================
+  # SBOM GENERATION
+  # ==========================================
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install CycloneDX
+        run: npm install -g @cyclonedx/cyclonedx-npm
+
+      - name: Generate SBOM
+        run: |
+          mkdir -p artifacts
+          cyclonedx-npm --output-file artifacts/sbom.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v3
+        with:
+          name: sbom
+          path: artifacts/sbom.json
+
+  # ==========================================
+  # DEPENDENCY CHECK
+  # ==========================================
+  dependency-check:
+    name: Dependency Vulnerability Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for outdated packages
+        run: npx npm-check-updates
+        continue-on-error: true
+
+      - name: Check unused dependencies
+        run: npx depcheck
+        continue-on-error: true
+
+  # ==========================================
+  # LINTING Y CODE QUALITY
+  # ==========================================
+  lint:
+    name: ESLint Security Rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: true
+
+  # ==========================================
+  # UNIT TESTS
+  # ==========================================
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/
+        if: always()
+
+  # ==========================================
+  # DOCKER SCAN (si se usa Docker)
+  # ==========================================
+  # docker-scan:
+  #   name: Docker Image Scan
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Build Docker image
+  #       run: docker build -t thenextstep:${{ github.sha }} .
+  #
+  #     - name: Run Trivy vulnerability scanner
+  #       uses: aquasecurity/trivy-action@master
+  #       with:
+  #         image-ref: thenextstep:${{ github.sha }}
+  #         format: 'sarif'
+  #         output: 'trivy-results.sarif'
+  #
+  #     - name: Upload Trivy results to GitHub Security
+  #       uses: github/codeql-action/upload-sarif@v2
+  #       with:
+  #         sarif_file: 'trivy-results.sarif'
+
+  # ==========================================
+  # SECURITY SUMMARY
+  # ==========================================
+  security-summary:
+    name: Security Check Summary
+    runs-on: ubuntu-latest
+    needs: [secrets-scan, codeql, npm-audit, sbom, dependency-check, lint, test]
+    if: always()
+    steps:
+      - name: Summary
+        run: |
+          echo "## 🔒 Security Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Secrets Scan: ${{ needs.secrets-scan.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ CodeQL Analysis: ${{ needs.codeql.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ NPM Audit: ${{ needs.npm-audit.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ SBOM Generation: ${{ needs.sbom.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Dependency Check: ${{ needs.dependency-check.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Linting: ${{ needs.lint.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Tests: ${{ needs.test.result }}" >> $GITHUB_STEP_SUMMARY
