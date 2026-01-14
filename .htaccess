@@ -1,0 +1,156 @@
+# ==========================================
+# SECURITY HARDENING - THE NEXT STEP
+# ==========================================
+
+# Disable directory browsing
+Options -Indexes
+
+# Disable server signature
+ServerSignature Off
+
+# ==========================================
+# SECURITY HEADERS
+# ==========================================
+
+<IfModule mod_headers.c>
+    # X-Frame-Options: Prevent clickjacking
+    Header always set X-Frame-Options "DENY"
+    
+    # X-Content-Type-Options: Prevent MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # X-XSS-Protection: Enable XSS filter
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer-Policy: Control referrer information
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content-Security-Policy: Strict CSP
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    
+    # Permissions-Policy: Disable unnecessary features
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=()"
+    
+    # Strict-Transport-Security: Force HTTPS (uncomment when using HTTPS)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Remove server information
+    Header always unset X-Powered-By
+    Header always unset Server
+</IfModule>
+
+# ==========================================
+# PREVENT ACCESS TO SENSITIVE FILES
+# ==========================================
+
+# Block access to hidden files and directories
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect sensitive files
+<FilesMatch "^(README|INSTALL|LICENSE|CHANGELOG|SECURITY|\.git|\.env|\.htaccess|\.htpasswd|package\.json|package-lock\.json|composer\.json|composer\.lock|tsconfig\.json|jest\.config\.js)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to backup files
+<FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|orig|save|~)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ==========================================
+# PREVENT CODE INJECTION
+# ==========================================
+
+# Disable PHP execution in uploads directory (if exists)
+<Directory "*/uploads">
+    php_flag engine off
+    AddHandler cgi-script .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .htm .shtml .sh .cgi
+    Options -ExecCGI
+</Directory>
+
+# ==========================================
+# RATE LIMITING & DOS PROTECTION
+# ==========================================
+
+<IfModule mod_evasive20.c>
+    DOSHashTableSize 3097
+    DOSPageCount 5
+    DOSSiteCount 100
+    DOSPageInterval 1
+    DOSSiteInterval 1
+    DOSBlockingPeriod 10
+</IfModule>
+
+# ==========================================
+# SSL/TLS CONFIGURATION
+# ==========================================
+
+# Force HTTPS (uncomment when SSL is configured)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ==========================================
+# PREVENT HOTLINKING
+# ==========================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?yourdomain\.com [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|svg|webp|mp4)$ - [F,NC]
+</IfModule>
+
+# ==========================================
+# COMPRESSION & CACHING (Performance + Security)
+# ==========================================
+
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser caching with security headers
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
+</IfModule>
+
+# ==========================================
+# ADDITIONAL PROTECTIONS
+# ==========================================
+
+# Disable ETags (can leak inode information)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# Prevent access from suspicious user agents
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|curl|scan|java|winhttp|clshttp|loader) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (;|<|>|'|"|\)|\(|%0A|%0D|%22|%27|%28|%3C|%3E|%00).*(libwww-perl|wget|python|nikto|curl|scan|java|winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Block SQL injection attempts
+<IfModule mod_rewrite.c>
+    RewriteCond %{QUERY_STRING} (union.*select|insert.*into|select.*from|delete.*from|drop.*table) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>

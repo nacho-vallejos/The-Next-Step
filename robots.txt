@@ -1,0 +1,62 @@
+// ==========================================
+// ROBOTS.TXT - SECURITY CONFIGURATION
+// ==========================================
+
+# Allow all legitimate crawlers
+User-agent: *
+Allow: /
+
+# Block access to sensitive directories
+Disallow: /config/
+Disallow: /src/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /logs/
+Disallow: /backups/
+Disallow: /tmp/
+Disallow: /cache/
+
+# Block access to sensitive files
+Disallow: /*.env$
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.bak$
+Disallow: /*.config$
+Disallow: /*package*.json$
+Disallow: /*tsconfig*.json$
+Disallow: /*jest*.js$
+Disallow: /.htaccess
+Disallow: /.htpasswd
+
+# Security policies
+Disallow: /SECURITY*
+Disallow: /README*
+Disallow: /INSTALL*
+
+# Specific crawlers configuration
+User-agent: Googlebot
+Allow: /
+Disallow: /search
+
+User-agent: Bingbot
+Allow: /
+Disallow: /search
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml

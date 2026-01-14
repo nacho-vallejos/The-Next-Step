@@ -1,0 +1,101 @@
+# ==========================================
+# SECURITY.TXT - RFC 9116 Compliant
+# ==========================================
+
+Contact: mailto:security@thenextstep.com.ar
+Contact: https://thenextstep.com.ar/security-report
+Expires: 2027-12-31T23:59:59.000Z
+Encryption: https://thenextstep.com.ar/pgp-key.txt
+Preferred-Languages: es, en
+Canonical: https://thenextstep.com.ar/.well-known/security.txt
+
+# Security Policy
+Policy: https://thenextstep.com.ar/security-policy
+
+# Acknowledgments
+Acknowledgments: https://thenextstep.com.ar/security-acknowledgments
+
+# Hiring
+Hiring: https://thenextstep.com.ar/careers
+
+# ==========================================
+# SCOPE
+# ==========================================
+
+# In Scope:
+# - Cross-Site Scripting (XSS)
+# - SQL Injection
+# - Authentication/Authorization flaws
+# - Sensitive Data Exposure
+# - CSRF/SSRF vulnerabilities
+# - Remote Code Execution
+# - Security Misconfigurations
+# - Business Logic Flaws
+
+# Out of Scope:
+# - Social Engineering
+# - Physical Security
+# - Denial of Service (DoS/DDoS)
+# - Spam/Phishing
+# - Rate limiting bypass
+# - SPF/DKIM/DMARC issues
+# - SSL/TLS configuration (unless critical)
+
+# ==========================================
+# DISCLOSURE POLICY
+# ==========================================
+
+# We follow coordinated disclosure:
+# 1. Report the vulnerability privately
+# 2. Allow 90 days for remediation
+# 3. Do not publicly disclose until patched
+# 4. Receive acknowledgment if desired
+
+# Response Time:
+# - Initial response: 24-48 hours
+# - Triage: 3-5 business days
+# - Resolution: Based on severity (Critical: 7 days, High: 30 days, Medium: 60 days, Low: 90 days)
+
+# ==========================================
+# SAFE HARBOR
+# ==========================================
+
+# We consider security research conducted under this policy to be:
+# - Authorized in accordance with applicable laws
+# - Conducted in good faith
+# - Not subject to legal action if guidelines are followed
+
+# Guidelines:
+# - Test only on your own accounts or with explicit permission
+# - Do not access, modify, or delete data belonging to others
+# - Do not perform actions that could harm availability
+# - Make every effort to avoid privacy violations
+# - Stop testing if you discover sensitive data
+# - Do not use automated scanners without permission
+
+# ==========================================
+# REWARDS
+# ==========================================
+
+# We do not currently offer monetary rewards but provide:
+# - Public acknowledgment (if desired)
+# - Direct communication with security team
+# - Impact assessment and remediation updates
+# - Possible future employment opportunities
+
+# ==========================================
+# ADDITIONAL INFORMATION
+# ==========================================
+
+# Security Headers:
+# - Content-Security-Policy: Strict
+# - X-Frame-Options: DENY
+# - X-Content-Type-Options: nosniff
+# - HSTS: Enabled (production)
+
+# Technologies:
+# - Frontend: HTML5, CSS3, Vanilla JavaScript
+# - Server: Nginx/Apache with hardened configuration
+# - No database (static site)
+
+# Thank you for helping us keep The Next Step secure!

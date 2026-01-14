@@ -1,0 +1,36 @@
+{
+  "name": "the-next-step-security",
+  "version": "2.0.0",
+  "description": "Security hardened website for The Next Step",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "jest",
+    "security-audit": "npm audit && snyk test",
+    "lint": "eslint script.js"
+  },
+  "keywords": ["security", "consulting", "legal", "compliance"],
+  "author": "The Next Step",
+  "license": "PROPRIETARY",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "snyk": "^1.0.0"
+  },
+  "config": {
+    "security": {
+      "csp": "strict",
+      "headers": "enabled",
+      "rateLimit": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "private"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
