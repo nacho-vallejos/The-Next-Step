@@ -381,12 +381,14 @@ const translations = {
         
         // Hero
         'hero-title': 'The Next Step',
+        'hero-tagline': 'Grandes Sueños, Pasos Estratégicos',
         'hero-subtitle': 'Consultoría legal y compliance digital para el siguiente paso de tu empresa.',
         'hero-btn': 'Dar el siguiente paso',
         'hero-experience': 'Más de 10 años de experiencia asesorando empresas del sector público y privado.',
         
         // Servicios
         'servicios-title': 'Nuestros Servicios',
+        'btn-explorar': 'Explorar',
         'servicio-1-title': 'Consultoría Legal Integral',
         'servicio-1-desc': 'Constitución de sociedades, contratos, y asesoría completa en derecho empresarial para el crecimiento de tu negocio.',
         'servicio-2-title': 'Compliance Digital',
@@ -416,11 +418,15 @@ const translations = {
         
         // Por qué elegirnos
         'why-title': 'Por qué elegirnos',
+        'why-text': 'En The Next Step, entendemos que el éxito no es el resultado del azar, sino de un proceso bien diseñado. Nos especializamos en guiar a empresas y emprendedores a través de un camino claro y estructurado que convierte metas ambiciosas en logros concretos.',
         'why-highlight': 'Somos los únicos en Santa Fe capital que integran derecho digital, ciberseguridad y experiencia legal en una sola consultora.',
         'why-subtitle': 'Nuestro equipo combina más de una década de experiencia y una visión innovadora para empresas en crecimiento.',
         
         // Nosotros
-        'nosotros-title': 'Quiénes Somos',
+        'nosotros-title': 'Quiénes somos y qué queremos cambiar',
+        'nosotros-intro-p1': 'En The Next Step, somos un equipo de profesionales de distintas ramas que entendemos que liderar un proyecto ambicioso puede generar incertidumbre y ansiedad. Por eso, ofrecemos un proceso claro, estructurado y personalizado que te permite avanzar con confianza hacia tus metas.',
+        'nosotros-intro-p2': 'Diseñamos estrategias específicas para cada caso, simplificando lo complejo y transformando tus ideas en un camino concreto y alcanzable. Nuestro servicio no solo maximiza resultados, sino que te brinda la tranquilidad de saber exactamente qué hacer en cada etapa, reduciendo la carga mental y permitiéndote enfocarte en lo que realmente importa.',
+        'nosotros-intro-p3': 'Con The Next Step, la claridad se convierte en tu mejor herramienta para liderar con seguridad y lograr lo extraordinario.',
         'nosotros-historia-title': 'Nuestra Historia',
         'nosotros-historia-p1': 'Nacimos con una misión clara: acompañar a cada negocio a dar su siguiente paso hacia el futuro. En un mundo empresarial en constante transformación, entendemos que el éxito requiere no solo cumplimiento normativo, sino una visión estratégica que anticipe los desafíos del mañana.',
         'nosotros-historia-p2': 'Desde nuestra fundación, hemos trabajado con empresas de diversos sectores, desde startups tecnológicas hasta corporaciones establecidas, ayudándolas a navegar el complejo panorama legal y digital con confianza y seguridad.',
@@ -434,6 +440,7 @@ const translations = {
         
         // Clientes
         'clientes-title': 'Confían en Nosotros',
+        'trust-title': 'Confían en Nosotros',
         'testimonio-1': '"The Next Step nos ayudó a estructurar legalmente nuestra startup tech desde cero. Su conocimiento en compliance digital fue fundamental."',
         'testimonio-1-autor': '— María González, CEO TechStart',
         'testimonio-2': '"Profesionalismo y experiencia en ciberseguridad. Nos brindaron la tranquilidad que necesitábamos para escalar nuestro negocio."',
@@ -456,6 +463,7 @@ const translations = {
         
         // Footer
         'footer-tagline': 'Dando el siguiente paso hacia el futuro.',
+        'footer-copyright': 'The Next Step © 2025 — Todos los derechos reservados.',
     },
     en: {
         // Header
@@ -469,12 +477,14 @@ const translations = {
         
         // Hero
         'hero-title': 'The Next Step',
+        'hero-tagline': 'Big Dreams, Strategic Steps',
         'hero-subtitle': 'Legal consulting and digital compliance for your company\'s next step.',
         'hero-btn': 'Take the next step',
         'hero-experience': 'Over 10 years of experience advising public and private sector companies.',
         
         // Servicios
         'servicios-title': 'Our Services',
+        'btn-explorar': 'Explore',
         'servicio-1-title': 'Comprehensive Legal Consulting',
         'servicio-1-desc': 'Company formation, contracts, and complete business law advisory for your business growth.',
         'servicio-2-title': 'Digital Compliance',
@@ -503,12 +513,16 @@ const translations = {
         'vmaas-cta': 'Schedule demo',
         
         // Por qué elegirnos
-        'why-title': 'Why Choose Us',
+        'why-title': 'Why choose us',
+        'why-text': 'At The Next Step, we understand that success is not the result of chance, but of a well-designed process. We specialize in guiding companies and entrepreneurs through a clear and structured path that turns ambitious goals into concrete achievements.',
         'why-highlight': 'We are the only firm in Santa Fe capital that integrates digital law, cybersecurity and legal experience in one consultancy.',
         'why-subtitle': 'Our team combines over a decade of experience and an innovative vision for growing companies.',
         
         // Nosotros
-        'nosotros-title': 'About Us',
+        'nosotros-title': 'Who we are and what we want to change',
+        'nosotros-intro-p1': 'At The Next Step, we are a team of professionals from different fields who understand that leading an ambitious project can generate uncertainty and anxiety. That is why we offer a clear, structured and personalized process that allows you to move forward with confidence towards your goals.',
+        'nosotros-intro-p2': 'We design specific strategies for each case, simplifying the complex and transforming your ideas into a concrete and achievable path. Our service not only maximizes results, but also gives you the peace of mind of knowing exactly what to do at each stage, reducing mental burden and allowing you to focus on what really matters.',
+        'nosotros-intro-p3': 'With The Next Step, clarity becomes your best tool to lead with confidence and achieve the extraordinary.',
         'nosotros-historia-title': 'Our Story',
         'nosotros-historia-p1': 'We were born with a clear mission: to help every business take its next step towards the future. In a constantly transforming business world, we understand that success requires not only regulatory compliance, but a strategic vision that anticipates tomorrow\'s challenges.',
         'nosotros-historia-p2': 'Since our founding, we have worked with companies from various sectors, from tech startups to established corporations, helping them navigate the complex legal and digital landscape with confidence and security.',
@@ -522,6 +536,7 @@ const translations = {
         
         // Clientes
         'clientes-title': 'They Trust Us',
+        'trust-title': 'They Trust Us',
         'testimonio-1': '"The Next Step helped us legally structure our tech startup from scratch. Their knowledge in digital compliance was fundamental."',
         'testimonio-1-autor': '— María González, CEO TechStart',
         'testimonio-2': '"Professionalism and expertise in cybersecurity. They gave us the peace of mind we needed to scale our business."',
@@ -544,6 +559,7 @@ const translations = {
         
         // Footer
         'footer-tagline': 'Taking the next step towards the future.',
+        'footer-copyright': 'The Next Step © 2025 — All rights reserved.',
     },
     ar: {
         // Header
@@ -557,12 +573,14 @@ const translations = {
         
         // Hero
         'hero-title': 'الخطوة التالية',
+        'hero-tagline': 'أحلام كبيرة، خطوات استراتيجية',
         'hero-subtitle': 'استشارات قانونية والامتثال الرقمي للخطوة التالية لشركتك.',
         'hero-btn': 'اتخذ الخطوة التالية',
         'hero-experience': 'أكثر من 10 سنوات من الخبرة في تقديم المشورة للشركات في القطاعين العام والخاص.',
         
         // Servicios
         'servicios-title': 'خدماتنا',
+        'btn-explorar': 'استكشف',
         'servicio-1-title': 'استشارات قانونية شاملة',
         'servicio-1-desc': 'تأسيس الشركات والعقود والمشورة الكاملة في قانون الأعمال لنمو عملك.',
         'servicio-2-title': 'الامتثال الرقمي',
@@ -592,11 +610,15 @@ const translations = {
         
         // Por qué elegirnos
         'why-title': 'لماذا تختارنا',
+        'why-text': 'في The Next Step، نفهم أن النجاح ليس نتيجة الصدفة، بل نتيجة عملية مصممة بشكل جيد. نحن متخصصون في توجيه الشركات ورجال الأعمال عبر طريق واضح ومنظم يحول الأهداف الطموحة إلى إنجازات ملموسة.',
         'why-highlight': 'نحن الوحيدون في سانتا في كابيتال الذين يدمجون القانون الرقمي والأمن السيبراني والخبرة القانونية في استشارة واحدة.',
         'why-subtitle': 'يجمع فريقنا بين أكثر من عقد من الخبرة ورؤية مبتكرة للشركات النامية.',
         
         // Nosotros
-        'nosotros-title': 'من نحن',
+        'nosotros-title': 'من نحن وما نريد تغييره',
+        'nosotros-intro-p1': 'في The Next Step، نحن فريق من المحترفين من مختلف المجالات الذين يفهمون أن قيادة مشروع طموح يمكن أن تولد عدم اليقين والقلق. لهذا السبب، نقدم عملية واضحة ومنظمة وشخصية تسمح لك بالمضي قدمًا بثقة نحو أهدافك.',
+        'nosotros-intro-p2': 'نصمم استراتيجيات محددة لكل حالة، مبسطين المعقد ومحولين أفكارك إلى طريق ملموس وقابل للتحقيق. خدمتنا لا تعظم النتائج فحسب، بل تمنحك أيضًا راحة البال من معرفة ما يجب فعله بالضبط في كل مرحلة، مما يقلل من العبء العقلي ويسمح لك بالتركيز على ما يهم حقًا.',
+        'nosotros-intro-p3': 'مع The Next Step، تصبح الوضوح أفضل أداة لك للقيادة بثقة وتحقيق الاستثنائي.',
         'nosotros-historia-title': 'قصتنا',
         'nosotros-historia-p1': 'ولدنا بمهمة واضحة: مساعدة كل عمل على اتخاذ خطوته التالية نحو المستقبل. في عالم الأعمال المتحول باستمرار، نفهم أن النجاح يتطلب ليس فقط الامتثال التنظيمي، بل رؤية استراتيجية تتوقع تحديات الغد.',
         'nosotros-historia-p2': 'منذ تأسيسنا، عملنا مع شركات من مختلف القطاعات، من الشركات الناشئة التقنية إلى الشركات الراسخة، مساعدتها في التنقل في المشهد القانوني والرقمي المعقد بثقة وأمان.',
@@ -610,6 +632,7 @@ const translations = {
         
         // Clientes
         'clientes-title': 'يثقون بنا',
+        'trust-title': 'يثقون بنا',
         'testimonio-1': '"ساعدتنا The Next Step في هيكلة شركتنا الناشئة التقنية قانونيًا من الصفر. كانت معرفتهم بالامتثال الرقمي أساسية."',
         'testimonio-1-autor': '— ماريا غونزاليس، الرئيس التنفيذي TechStart',
         'testimonio-2': '"الاحترافية والخبرة في الأمن السيبراني. منحونا راحة البال التي احتجناها لتوسيع أعمالنا."',
@@ -632,6 +655,7 @@ const translations = {
         
         // Footer
         'footer-tagline': 'اتخاذ الخطوة التالية نحو المستقبل.',
+        'footer-copyright': 'The Next Step © 2025 — جميع الحقوق محفوظة.',
     }
 };
 
@@ -652,12 +676,14 @@ function changeLanguage(lang) {
     // Traducir todos los elementos con data-translate
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
-        if (translations[lang][key]) {
+        if (translations[lang] && translations[lang][key]) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translations[lang][key];
             } else {
                 element.textContent = translations[lang][key];
             }
+        } else {
+            console.warn(`Translation missing for key: ${key} in language: ${lang}`);
         }
     });
     
@@ -687,7 +713,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 window.addEventListener('load', () => {
     const savedLang = localStorage.getItem('preferred-language');
     // Sanitize and validate language input
-    const allowedLangs = ['es', 'en', 'pt'];
+    const allowedLangs = ['es', 'en', 'ar'];
     if (savedLang && allowedLangs.includes(savedLang) && translations[savedLang]) {
         changeLanguage(savedLang);
     }

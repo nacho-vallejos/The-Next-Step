@@ -6,36 +6,27 @@
     <meta name="description" content="The Next Step - Consultoría legal y compliance digital para el siguiente paso de tu empresa">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=()">
     
     <title>The Next Step | Consultoría Legal y Compliance Digital</title>
     <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Lunar Background -->
     <div class="lunar-background"></div>
-    
-    <!-- Video de fondo lunar -->
-    <video id="lunar-video-bg" autoplay muted loop playsinline>
-        <source src="assets/videos/background.mp4" type="video/mp4">
-        <!-- Fallback a imagen si el video no carga -->
-    </video>
 
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-text-minimal" data-translate="logo-minimal">CONSULTING</span>
+                    <img src="assets/logo.svg" alt="The Next Step" style="height: 35px; width: auto;">
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
@@ -68,7 +59,7 @@
             <div class="hero-content-asymmetric">
                 <h1 class="hero-title-massive fade-in" data-translate="hero-title">The Next<br>Step</h1>
                 <div class="hero-subtitle-wrapper">
-                    <p class="hero-subtitle-minimal fade-in" data-translate="hero-subtitle">el próximo paso a tu futuro</p>
+                    <p class="hero-tagline-elegant fade-in" data-translate="hero-tagline">Grandes Sueños, Pasos Estratégicos</p>
                 </div>
                 <a href="#contacto" class="btn-ghost-circle fade-in" aria-label="Dar el siguiente paso">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -83,39 +74,66 @@
         </div>
     </section>
 
-    <!-- Servicios Section -->
+    <!-- Servicios Section - Awwwards Bento Grid -->
     <section class="servicios" id="servicios">
         <div class="container">
-            <h2 class="section-title-minimal" data-translate="servicios-title">Servicios</h2>
-            <div class="bento-grid">
-                <div class="bento-box">
-                    <div class="bento-number">01</div>
-                    <h3 class="bento-title" data-translate="servicio-1-title">Consultoría Legal Integral</h3>
-                    <p class="bento-description" data-translate="servicio-1-desc">Constitución de sociedades, contratos, y asesoría completa en derecho empresarial.</p>
+            <h2 class="section-title-display" data-translate="servicios-title">Nuestros Servicios</h2>
+            <div class="bento-grid-awwwards">
+                <!-- Business Development -->
+                <div class="bento-card-awwwards" data-service="business">
+                    <div class="bento-card-inner">
+                        <div class="bento-icon-minimal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="bento-title-display" data-translate="servicio-business-title">Business Development</h3>
+                        <p class="bento-description-elegant" data-translate="servicio-business-desc">Desarrollo de modelo de negocio para start up.</p>
+                        <div class="bento-hover-indicator">
+                            <span data-translate="btn-explorar">Explorar</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bento-box">
-                    <div class="bento-number">02</div>
-                    <h3 class="bento-title" data-translate="servicio-2-title">Compliance Digital</h3>
-                    <p class="bento-description" data-translate="servicio-2-desc">Normativas digitales, derecho tecnológico y adaptación legal para startups tech.</p>
+                <!-- Aerospace -->
+                <div class="bento-card-awwwards" data-service="aerospace">
+                    <div class="bento-card-inner">
+                        <div class="bento-icon-minimal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="bento-title-display" data-translate="servicio-aerospace-title">Aerospace</h3>
+                        <p class="bento-description-elegant" data-translate="servicio-aerospace-desc">Consultoría estratégica para el desarrollo de la industria aeroespacial. Regulaciones, compliance y posicionamiento sectorial.</p>
+                        <div class="bento-hover-indicator">
+                            <span data-translate="btn-explorar">Explorar</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bento-box">
-                    <div class="bento-number">03</div>
-                    <h3 class="bento-title" data-translate="servicio-3-title">Ciberseguridad</h3>
-                    <p class="bento-description" data-translate="servicio-3-desc">Protección de datos, auditorías técnicas y asesoramiento preventivo.</p>
-                </div>
-
-                <div class="bento-box">
-                    <div class="bento-number">04</div>
-                    <h3 class="bento-title" data-translate="servicio-4-title">Asesoría Estratégica</h3>
-                    <p class="bento-description" data-translate="servicio-4-desc">Escalamiento empresarial y planificación legal para startups.</p>
-                </div>
-
-                <div class="bento-box bento-box-featured">
-                    <div class="bento-number">05</div>
-                    <h3 class="bento-title bento-title-large" data-translate="servicio-5-title">e-Government</h3>
-                    <p class="bento-description bento-description-large" data-translate="servicio-5-desc">Soluciones integrales para modernizar la gestión pública, optimizar procesos y fortalecer la transparencia institucional. Acompañamos a los organismos del Estado en la implementación de servicios digitales seguros, eficientes y centrados en la ciudadanía.</p>
+                <!-- Ciberseguridad -->
+                <div class="bento-card-awwwards" data-service="cyber">
+                    <div class="bento-card-inner">
+                        <div class="bento-icon-minimal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="bento-title-display" data-translate="servicio-ciber-title">Ciberseguridad</h3>
+                        <p class="bento-description-elegant" data-translate="servicio-ciber-desc">Protección de datos, auditorías técnicas y asesoramiento preventivo. Pentest, gestión de vulnerabilidades y compliance digital.</p>
+                        <div class="bento-hover-indicator">
+                            <span data-translate="btn-explorar">Explorar</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,9 +227,8 @@
         <div class="container">
             <div class="why-us-content">
                 <div class="why-us-text">
-                    <h2 class="section-title" data-translate="why-title">Por qué elegirnos</h2>
-                    <p class="why-us-highlight" data-translate="why-highlight">Somos los únicos en Santa Fe capital que integran derecho digital, ciberseguridad y experiencia legal en una sola consultora.</p>
-                    <p class="why-us-subtitle" data-translate="why-subtitle">Nuestro equipo combina más de una década de experiencia y una visión innovadora para empresas en crecimiento.</p>
+                    <h2 class="section-title-display" data-translate="why-title">Por qué elegirnos</h2>
+                    <p class="why-us-paragraph-reveal" data-translate="why-text">En The Next Step, entendemos que el éxito no es el resultado del azar, sino de un proceso bien diseñado. Nos especializamos en guiar a empresas y emprendedores a través de un camino claro y estructurado que convierte metas ambiciosas en logros concretos.</p>
                 </div>
                 <div class="why-us-image">
                     <div class="astronaut-icon">
@@ -232,38 +249,51 @@
     <!-- Nosotros Section -->
     <section class="nosotros" id="nosotros">
         <div class="container">
-            <h2 class="section-title" data-translate="nosotros-title">Quiénes Somos</h2>
+            <h2 class="section-title-display" data-translate="nosotros-title">Quiénes somos y qué queremos cambiar</h2>
             <div class="nosotros-content">
                 <div class="nosotros-text">
-                    <h3 data-translate="nosotros-historia-title">Nuestra Historia</h3>
-                    <p data-translate="nosotros-historia-p1">Nacimos con una misión clara: acompañar a cada negocio a dar su siguiente paso hacia el futuro. En un mundo empresarial en constante transformación, entendemos que el éxito requiere no solo cumplimiento normativo, sino una visión estratégica que anticipe los desafíos del mañana.</p>
-                    <p data-translate="nosotros-historia-p2">Desde nuestra fundación, hemos trabajado con empresas de diversos sectores, desde startups tecnológicas hasta corporaciones establecidas, ayudándolas a navegar el complejo panorama legal y digital con confianza y seguridad.</p>
+                    <p class="nosotros-paragraph-reveal" data-translate="nosotros-intro-p1">En The Next Step, somos un equipo de profesionales de distintas ramas que entendemos que liderar un proyecto ambicioso puede generar incertidumbre y ansiedad. Por eso, ofrecemos un proceso claro, estructurado y personalizado que te permite avanzar con confianza hacia tus metas.</p>
+                    <p class="nosotros-paragraph-reveal" data-translate="nosotros-intro-p2">Diseñamos estrategias específicas para cada caso, simplificando lo complejo y transformando tus ideas en un camino concreto y alcanzable. Nuestro servicio no solo maximiza resultados, sino que te brinda la tranquilidad de saber exactamente qué hacer en cada etapa, reduciendo la carga mental y permitiéndote enfocarte en lo que realmente importa.</p>
+                    <p class="nosotros-paragraph-reveal" data-translate="nosotros-intro-p3">Con The Next Step, la claridad se convierte en tu mejor herramienta para liderar con seguridad y lograr lo extraordinario.</p>
                 </div>
-                <div class="nosotros-text">
-                    <h3 data-translate="nosotros-valores-title">Nuestros Valores</h3>
-                    <div class="valores-list">
-                        <div class="valor-item">
-                            <span class="valor-icon">→</span>
-                            <div>
-                                <strong data-translate="valor-1-title">Innovación</strong>
-                                <p data-translate="valor-1-desc">Adoptamos las últimas tendencias legales y tecnológicas</p>
-                            </div>
-                        </div>
-                        <div class="valor-item">
-                            <span class="valor-icon">→</span>
-                            <div>
-                                <strong data-translate="valor-2-title">Confianza</strong>
-                                <p data-translate="valor-2-desc">Construimos relaciones duraderas basadas en la transparencia</p>
-                            </div>
-                        </div>
-                        <div class="valor-item">
-                            <span class="valor-icon">→</span>
-                            <div>
-                                <strong data-translate="valor-3-title">Compromiso</strong>
-                                <p data-translate="valor-3-desc">Nos dedicamos al éxito de cada cliente como si fuera nuestro</p>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confían en Nosotros Section - Marquee Infinito -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="section-title-display trust-title" data-translate="trust-title">Confían en Nosotros</h2>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="client-item">
+                    <span class="client-name">Foreman</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">Netsaver</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">Global Talent Football Agency</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">Arquitecta de México</span>
+                </div>
+                <!-- Duplicado para efecto infinito -->
+                <div class="client-item">
+                    <span class="client-name">Foreman</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">TO Legaltech</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">Netsaver</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">Global Talent Football Agency</span>
+                </div>
+                <div class="client-item">
+                    <span class="client-name">Arquitecta de México</span>
                 </div>
             </div>
         </div>
@@ -292,7 +322,7 @@
                             <label for="mensaje" data-translate="form-mensaje">Mensaje</label>
                             <textarea id="mensaje" name="mensaje" rows="5" required data-translate="form-mensaje" placeholder="Mensaje"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" data-translate="form-btn">Enviar consulta</button>
+                        <button type="submit" class="btn-submit" data-translate="form-btn">Enviar consulta</button>
                     </form>
                 </div>
                 <div class="contacto-info">
@@ -327,9 +357,9 @@
                     </div>
                     <div class="map-container">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.6167853732883!2d-60.6680789!3d-31.6413956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a83b8cf4e35d%3A0x4c6f7a7b8b8b8b8b!2sPuerto%20Norte%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1699293600000!5m2!1ses!2sar"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108699.09114046783!2d-60.716677449999996!3d-31.6196766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9c2f68836bd%3A0xe4f9649f97d87e43!2sSanta%20Fe%2C%20Santa%20Fe%20Province%2C%20Argentina!5e0!3m2!1sen!2sus!4v1705708800000!5m2!1sen!2sus"
                             width="100%" 
-                            height="250" 
+                            height="350" 
                             style="border:0;" 
                             allowfullscreen="" 
                             loading="lazy"
@@ -371,11 +401,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>The Next Step © 2025 — Todos los derechos reservados.</p>
+                <p data-translate="footer-copyright">The Next Step © 2025 — Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="awwwards-animations.js"></script>
 </body>
 </html>
