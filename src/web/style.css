@@ -642,6 +642,49 @@ body::before {
     font-size: 1rem;
 }
 
+.nosotros-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nosotros-path-svg {
+    width: 100%;
+    max-width: 340px;
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.15));
+}
+
+.nosotros-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nosotros-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
 .valores-list {
     display: flex;
     flex-direction: column;

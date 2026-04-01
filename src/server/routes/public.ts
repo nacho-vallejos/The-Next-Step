@@ -104,4 +104,18 @@ router.use(
   })
 );
 
+/**
+ * Servir archivos estáticos de la raíz web (style.css, script.js, etc.)
+ */
+router.use(
+  express.static(path.join(__dirname, '../../web'), {
+    maxAge: '1d',
+    etag: true,
+    index: false,
+    setHeaders: (res, filePath) => {
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+    },
+  })
+);
+
 export default router;

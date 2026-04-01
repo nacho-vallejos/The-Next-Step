@@ -35,13 +35,17 @@ const pinoOptions: pino.LoggerOptions = {
   
   // Redactar campos sensibles
   redact: {
-    paths: REDACTED_FIELDS.flatMap(field => [
-      field,
-      `req.headers.${field}`,
-      `req.body.${field}`,
-      `req.query.${field}`,
-      `res.headers.${field}`,
-    ]),
+    paths: REDACTED_FIELDS.flatMap(field => {
+      const seg = /[^a-zA-Z0-9_$]/.test(field) ? `['${field}']` : `.${field}`;
+      const top = /[^a-zA-Z0-9_$]/.test(field) ? `["${field}"]` : field;
+      return [
+        top,
+        `req.headers${seg}`,
+        `req.body${seg}`,
+        `req.query${seg}`,
+        `res.headers${seg}`,
+      ];
+    }),
     censor: '[REDACTED]',
   },
 

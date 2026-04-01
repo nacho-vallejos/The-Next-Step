@@ -26,7 +26,7 @@ export const helmetConfig = (req: Request, res: Response, next: NextFunction) =>
         imgSrc: ["'self'", 'data:', 'https:'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
         connectSrc: ["'self'"],
-        frameSrc: ["'self'", 'https://www.google.com'], // Google Maps
+        frameSrc: ["'self'", 'https://www.google.com', 'https://maps.google.com'], // Google Maps
         frameAncestors: ["'none'"],
         baseUri: ["'self'"],
         formAction: ["'self'"],
