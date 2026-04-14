@@ -57,10 +57,12 @@ export const contactFormSchema = Joi.object({
 
   empresa: Joi.string()
     .trim()
+    .min(2)
     .max(200)
-    .allow('')
-    .optional()
+    .required()
     .messages({
+      'string.empty': 'La empresa es requerida',
+      'string.min': 'La empresa debe tener al menos 2 caracteres',
       'string.max': 'El nombre de empresa es demasiado largo',
     }),
 
@@ -96,8 +98,9 @@ export const contactFormSchemaZod = z.object({
   empresa: z
     .string()
     .trim()
-    .max(200, 'El nombre de empresa es demasiado largo')
-    .optional(),
+    .min(2, 'La empresa debe tener al menos 2 caracteres')
+    .max(200, 'El nombre de empresa es demasiado largo'),
+  
 
   mensaje: z
     .string()

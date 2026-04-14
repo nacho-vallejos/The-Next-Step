@@ -10,7 +10,7 @@ const router: Router = express.Router();
 
 /**
  * POST /api/contact
- * Procesar formulario de contacto
+ * Registrar consulta y derivar a WhatsApp
  */
 router.post(
   '/api/contact',
@@ -20,15 +20,13 @@ router.post(
   asyncHandler(async (req: Request, res: Response) => {
     const { nombre, email, empresa, mensaje } = req.body;
 
-    // Sanitización adicional
     const sanitizedData = {
       nombre: sanitizeText(nombre),
       email: sanitizeEmail(email),
-      empresa: empresa ? sanitizeText(empresa) : '',
+      empresa: sanitizeText(empresa),
       mensaje: sanitizeText(mensaje),
     };
 
-    // Log de auditoría
     auditLogger.info({
       action: 'CONTACT_FORM_SUBMITTED',
       data: {
@@ -41,17 +39,7 @@ router.post(
       userAgent: req.get('user-agent'),
     });
 
-    // TODO: Enviar email
-    // await sendContactEmail(sanitizedData);
-
-    // TODO: Guardar en base de datos
-    // await saveContactSubmission(sanitizedData);
-
-    // Simular procesamiento
-    logger.info({
-      msg: 'Formulario de contacto procesado',
-      email: sanitizedData.email,
-    });
+    logger.info({ msg: 'Consulta recibida - derivada a WhatsApp', email: sanitizedData.email });
 
     res.status(200).json({
       success: true,

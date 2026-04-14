@@ -162,31 +162,58 @@ servicioCards.forEach(card => observer.observe(card));
 
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Obtener valores del formulario
-    const formData = {
-        nombre: document.getElementById('nombre').value,
-        email: document.getElementById('email').value,
-        empresa: document.getElementById('empresa').value,
-        mensaje: document.getElementById('mensaje').value
-    };
-    
-    // Validación básica
-    if (!formData.nombre || !formData.email || !formData.mensaje) {
-        showNotification('Por favor, completa todos los campos obligatorios.', 'error');
+
+    const nombre  = document.getElementById('nombre').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const empresa = document.getElementById('empresa').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if (!nombre || !email || !empresa || !mensaje) {
+        showNotification('Por favor, completa todos los campos.', 'error');
         return;
     }
-    
-    // Aquí puedes integrar con tu backend o servicio de email
-    console.log('Formulario enviado:', formData);
-    
-    // Simulación de envío exitoso
-    showNotification('¡Gracias por contactarnos! Responderemos pronto.', 'success');
-    
-    // Limpiar formulario
-    contactForm.reset();
+
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    try {
+        // Obtener CSRF token del meta tag inyectado por el servidor
+        const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+        const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
+
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,
+            },
+            body: JSON.stringify({ nombre, email, empresa, mensaje }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+            showNotification(data.message || '¡Consulta enviada! Nos contactaremos pronto.', 'success');
+            contactForm.reset();
+
+            // Abrir WhatsApp con mensaje pre-completado
+            const waText = encodeURIComponent(
+                `Hola The Next Step, tengo una consulta...\n\nNombre: ${nombre}\nEmpresa: ${empresa}\nEmail: ${email}\n\n${mensaje}`
+            );
+            window.open(`https://wa.me/5493426312455?text=${waText}`, '_blank');
+        } else {
+            const errMsg = data.errors?.[0]?.msg || data.message || 'Error al enviar. Intenta de nuevo.';
+            showNotification(errMsg, 'error');
+        }
+    } catch (err) {
+        showNotification('Error de conexión. Verificá tu internet e intentá de nuevo.', 'error');
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Enviar consulta';
+    }
 });
 
 // ==========================================
