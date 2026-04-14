@@ -127,7 +127,7 @@ export const additionalSecurityHeaders = (req: Request, res: Response, next: Nex
 /**
  * Ocultar información del servidor
  */
-export const hideServerInfo = (req: Request, res: Response, next: NextFunction) => {
+export const hideServerInfo = (_req: Request, res: Response, next: NextFunction) => {
   res.removeHeader('X-Powered-By');
   res.removeHeader('Server');
   next();

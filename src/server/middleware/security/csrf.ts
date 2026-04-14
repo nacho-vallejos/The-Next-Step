@@ -2,6 +2,8 @@ import csrf from 'csurf';
 import { Request, Response, NextFunction } from 'express';
 import { logger } from '../../utils/logger';
 
+type RequestWithCsrf = Request & { csrfToken?: () => string };
+
 /**
  * Configuración de protección CSRF con double submit cookie
  */
@@ -15,11 +17,10 @@ export const csrfProtection = csrf({
     maxAge: 3600000, // 1 hora
   },
   value: (req: Request) => {
-    // Buscar token en header o body
     return (
       req.headers['x-csrf-token'] as string ||
       req.body._csrf ||
-      req.query._csrf as string
+      (req.query._csrf as string)
     );
   },
 });
@@ -27,10 +28,10 @@ export const csrfProtection = csrf({
 /**
  * Middleware para inyectar token CSRF en respuestas HTML
  */
-export const injectCsrfToken = (req: Request, res: Response, next: NextFunction) => {
+export const injectCsrfToken = (req: RequestWithCsrf, res: Response, next: NextFunction) => {
   if (req.csrfToken) {
     res.locals.csrfToken = req.csrfToken();
-    
+
     // Para APIs JSON, incluir en header
     if (req.path.startsWith('/api/')) {
       res.setHeader('X-CSRF-Token', res.locals.csrfToken);
@@ -55,7 +56,6 @@ export const csrfErrorHandler = (err: any, req: Request, res: Response, next: Ne
     referer: req.get('referer'),
   });
 
-  // CSRF token inválido
   res.status(403).json({
     error: 'Token de seguridad inválido o expirado. Por favor recargue la página.',
     code: 'CSRF_VALIDATION_FAILED',
@@ -67,17 +67,14 @@ export const csrfErrorHandler = (err: any, req: Request, res: Response, next: Ne
  * Solo aplica a rutas que modifican datos
  */
 export const conditionalCsrfProtection = (req: Request, res: Response, next: NextFunction) => {
-  // Skip CSRF para métodos seguros
   if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
     return next();
   }
 
-  // Skip CSRF para APIs con autenticación JWT (ya protegidas)
   if (req.path.startsWith('/api/') && req.headers.authorization) {
     return next();
   }
 
-  // Aplicar CSRF protection
   return csrfProtection(req, res, next);
 };
 
@@ -90,17 +87,11 @@ export const validateCsrfOrigin = (req: Request, res: Response, next: NextFuncti
   const host = req.get('host');
 
   if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(req.method)) {
-    // Verificar que origin/referer coincida con host
     if (origin) {
       try {
         const originUrl = new URL(origin);
         if (originUrl.host !== host) {
-          logger.warn({
-            msg: 'CSRF: Origin no coincide con host',
-            origin,
-            host,
-            ip: req.ip,
-          });
+          logger.warn({ msg: 'CSRF: Origin no coincide con host', origin, host, ip: req.ip });
           return res.status(403).json({ error: 'Invalid request origin' });
         }
       } catch (e) {
@@ -110,12 +101,7 @@ export const validateCsrfOrigin = (req: Request, res: Response, next: NextFuncti
       try {
         const refererUrl = new URL(referer);
         if (refererUrl.host !== host) {
-          logger.warn({
-            msg: 'CSRF: Referer no coincide con host',
-            referer,
-            host,
-            ip: req.ip,
-          });
+          logger.warn({ msg: 'CSRF: Referer no coincide con host', referer, host, ip: req.ip });
           return res.status(403).json({ error: 'Invalid request referer' });
         }
       } catch (e) {

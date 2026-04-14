@@ -98,17 +98,10 @@ export const contactRateLimiter = rateLimit({
 export const slowDownMiddleware = slowDown({
   windowMs: 15 * 60 * 1000, // 15 minutos
   delayAfter: 50,
-  delayMs: 500, // Añadir 500ms de delay por cada request sobre el límite
+  delayMs: () => 500, // Añadir 500ms de delay por cada request sobre el límite
   maxDelayMs: 20000, // Máximo 20 segundos de delay
   skipSuccessfulRequests: false,
   skipFailedRequests: false,
-  onLimitReached: (req: Request) => {
-    logger.warn({
-      msg: 'Slow down activado',
-      ip: req.ip,
-      path: req.path,
-    });
-  },
 });
 
 /**
